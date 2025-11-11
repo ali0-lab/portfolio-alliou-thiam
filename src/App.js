@@ -31,6 +31,7 @@ const portfolioData = {
       period: "2023 - 2025",
       title: "Chef de Projet SI et Transformation Digitale",
       company: "Siemens, Paris",
+      logoUrl: "/logo-siemens.png",
       tasks: [
         "Pilotage du développement d'un agent Copilot Studio / IA pour automatiser la conformité SCM.",
         "Planification et exécution de la migration Windows 10 vers Windows 11.",
@@ -43,6 +44,7 @@ const portfolioData = {
       period: "2022 - 2023",
       title: "Assistant Chef de Projet Web",
       company: "Mosi consulting, Luxembourg",
+      logoUrl: "/logo-mosi.png",
       tasks: [
         "Planification et suivi des jalons de projet avec GanttProject.",
         "Mise en œuvre d'un service de formation en e-learning.",
@@ -53,6 +55,7 @@ const portfolioData = {
       period: "2020 - 2022",
       title: "Assistant Manager",
       company: "Goerge Lettre, Metz",
+      logoUrl: "/logo-goerge.png",
       tasks: [
         "Création et déploiement d'une campagne promotionnelle.",
         "Optimisation du référencement Google (SEO) et gestion de contenu web.",
@@ -104,13 +107,24 @@ const App = () => {
     </section>
   );
 
-  const ExperienceCard = ({ period, title, company, tasks }) => (
+  const ExperienceCard = ({ period, title, company, tasks, logoUrl }) => (
     <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-indigo-500 my-4">
       <div className="flex justify-between items-start mb-2">
         <h3 className="text-xl font-bold text-gray-800">{title}</h3>
         <span className="text-sm font-medium text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">{period}</span>
       </div>
-      <p className="text-md font-semibold text-gray-600 mb-4">{company}</p>
+      <div className="flex items-center mb-4">
+        <img
+          src={logoUrl}
+          alt={`Logo ${company}`}
+          className="w-10 h-10 rounded-lg mr-4 object-contain"
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = "https://placehold.co/40x40/f0f0f0/999999?text=Logo";
+          }}
+        />
+        <p className="text-md font-semibold text-gray-600">{company}</p>
+      </div>
       <ul className="space-y-2 list-none p-0">
         {tasks.map((task, index) => (
           <li key={index} className="flex items-start text-gray-700">
