@@ -16,7 +16,7 @@ const portfolioData = {
   name: "Alliou Thiam",
   title: "Chef de Projet SI & Transformation Digitale",
   // TODO: Remplacer cette URL par l'URL réelle de votre photo de profil en ligne (hébergée)
-  photoUrl: "https://placehold.co/150x150/ffffff/1f2937?text=Alliou+T", 
+  photoUrl:"/photo-alliou-thiam.jpg", 
   profile: "J'aime les défis et les projets ambitieux avec des technologies innovantes. Ayant géré divers projets en start-up et multinationales, je suis curieux et toujours en veille sur les nouvelles technologies pour optimiser les processus métiers.",
   contact: {
     phone: "+33 6 80 47 24 00",
@@ -213,16 +213,18 @@ const App = () => {
           <div className="pt-8 pb-16 text-center">
             {/* Ajout de la photo de profil ici */}
             <div className="mb-8">
-                <img
-                    src={portfolioData.photoUrl}
-                    alt={`Photo de profil de ${portfolioData.name}`}
-                    className="w-36 h-36 rounded-full mx-auto object-cover ring-4 ring-indigo-300 ring-offset-4 ring-offset-indigo-700 shadow-2xl transition duration-300 hover:scale-105"
-                    onError={(e) => {
-                        // Fallback au cas où l'image n'est pas trouvée
-                        e.target.onerror = null; 
-                        e.target.src = "https://placehold.co/150x150/ffffff/1f2937?text=Alliou+T";
-                    }}
-                />
+                // La ligne à modifier dans le fichier src/App.js
+            <img
+              src={portfolioData.photoUrl}
+              // MODIFICATION ICI : On enlève les mots "Portrait" et "Photo"
+              alt={portfolioData.name + ", Chef de Projet SI"} 
+              className="w-36 h-36 rounded-full mx-auto object-cover ring-4 ring-indigo-300 ring-offset-4 ring-offset-indigo-700 shadow-2xl transition duration-300 hover:scale-105"
+              onError={(e) => {
+                  // Fallback au cas où l'image n'est pas trouvée
+                  e.target.onerror = null; 
+                  e.target.src = "https://placehold.co/150x150/ffffff/1f2937?text=Alliou+T";
+              }}
+              />
             </div>
             
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
