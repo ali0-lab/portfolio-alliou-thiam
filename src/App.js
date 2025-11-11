@@ -9,16 +9,22 @@ const Phone = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" widt
 const MapPin = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>;
 const Globe = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>;
 const Languages = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h10"/><path d="M10 10l3 3 2-3"/><path d="M14 2c2 0 7 2 7 11s-5 11-7 11"/><path d="M16 4h4"/><path d="M16 20h4"/></svg>;
+const Linkedin = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>;
+const Download = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>;
+const Heart = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3.33.95-4.5 2.4C10.83 3.95 9.26 3 7.5 3A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>;
+
 
 const portfolioData = {
   name: "Alliou Thiam",
   title: "Chef de Projet SI & Transformation Digitale",
-  photoUrl:"/photo-alliou-thiam.jpg", 
+  photoUrl:"/photo-alliou-thiam.jpg",
+  cvPdfUrl: "/CV_Thiam_Alliou.pdf",
   profile: "J'aime les défis et les projets ambitieux avec des technologies innovantes. Ayant géré divers projets en start-up et multinationales, je suis curieux et toujours en veille sur les nouvelles technologies pour optimiser les processus métiers.",
   contact: {
     phone: "+33 6 80 47 24 00",
     email: "alliouthiam71@gmail.com",
-    location: "Bezons 95870, France",
+    location: "Val-d'Oise France",
+    linkedin: "https://www.linkedin.com/in/alliou-t-41565620a/",
   },
   skills: {
     project: ["Gestion de Projet (Jira, Trello)", "Scrum Master", "PMP"],
@@ -84,6 +90,12 @@ const portfolioData = {
     { name: "Français", level: "Maternelle" },
     { name: "Anglais", level: "B2 (TOEIC)" },
     { name: "Espagnol", level: "A1" },
+  ],
+  engagements: [
+    { year: "2025", title: "Bénévole - Aide mondiale Paris" },
+    { year: "2024", title: "Bénévole - Human ICS Paris" },
+    { year: "2018", title: "Basket-ball - Niveau pré-national" },
+    { year: "2017", title: "Co-fondateur - 2PB" },
   ],
 };
 
@@ -186,12 +198,13 @@ const App = () => {
             <div className="flex items-center">
               <h1 className="text-2xl font-extrabold text-indigo-600">A. Thiam Portfolio</h1>
             </div>
-            <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-4">
               {[
                 { id: 'accueil', label: 'Accueil' },
                 { id: 'experiences', label: 'Expériences' },
                 { id: 'competences', label: 'Compétences' },
                 { id: 'formation', label: 'Formation' },
+                { id: 'engagements', label: 'Engagements' },
                 { id: 'contact', label: 'Contact' },
               ].map((item) => (
                 <button
@@ -247,18 +260,32 @@ const App = () => {
                     <Mail className="w-5 h-5"/>
                     <span className="font-medium">{portfolioData.contact.email}</span>
                 </a>
+                <a href={portfolioData.contact.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-white hover:text-indigo-200 transition duration-150">
+                    <Linkedin className="w-5 h-5"/>
+                    <span className="font-medium">LinkedIn</span>
+                </a>
                 <span className="flex items-center space-x-2 text-white">
                     <MapPin className="w-5 h-5"/>
                     <span className="font-medium">{portfolioData.contact.location}</span>
                 </span>
             </div>
 
-            <button
-                onClick={() => scrollToSection('experiences')}
-                className="mt-12 px-8 py-3 border border-transparent text-base font-medium rounded-lg shadow-xl text-indigo-700 bg-white hover:bg-indigo-50 transition duration-300 transform hover:scale-105"
-            >
-                Voir mes Expériences Clés
-            </button>
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mt-12">
+              <a
+                  href={portfolioData.cvPdfUrl}
+                  download="CV_Alliou_Thiam.pdf"
+                  className="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg shadow-xl text-white bg-indigo-600 hover:bg-indigo-700 transition duration-300 transform hover:scale-105"
+              >
+                  <Download className="w-5 h-5 mr-2"/>
+                  Télécharger mon CV
+              </a>
+              <button
+                  onClick={() => scrollToSection('experiences')}
+                  className="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg shadow-xl text-indigo-700 bg-white hover:bg-indigo-50 transition duration-300 transform hover:scale-105"
+              >
+                  Voir mes Expériences Clés
+              </button>
+            </div>
           </div>
         </Section>
 
@@ -290,6 +317,17 @@ const App = () => {
               </div>
             ))}
           </div>
+        </Section>
+        
+        <Section id="engagements" title="Engagements & Centres d'Intérêt" icon={Heart} bgColor="bg-white">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {portfolioData.engagements.map((item, index) => (
+                <div key={index} className="bg-gray-50 p-6 rounded-xl shadow-lg border-b-4 border-indigo-400 hover:shadow-xl transition duration-300">
+                    <p className="text-sm font-semibold text-indigo-600 mb-1">{item.year}</p>
+                    <h3 className="text-lg font-bold text-gray-800">{item.title}</h3>
+                </div>
+                ))}
+            </div>
         </Section>
 
         <Section id="contact" title="Discutons de Votre Projet" icon={Mail} bgColor="bg-indigo-700" textColor="text-white">
